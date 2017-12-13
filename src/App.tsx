@@ -1,19 +1,35 @@
 import * as React from "react";
 import { Button, Drawer, Toolbar, Divider } from "react-md";
+import { inject } from "mobx-react";
 import "./App.css";
 import { DrawerPosition } from "react-md/lib/Drawers";
 import Nav from "./components/Shared/Nav";
-import VideoList from "./components/VideoList";
+// import VideoList from "./components/VideoList";
+import DomainList from "./components/DomainList";
+import { Stores } from "./stores";
 
-const logo = require(".assets/images/logo.svg");
+const logo = require("./assets/images/logo.svg");
+
+interface AppProps {
+  stores?: Stores;
+}
 
 interface AppState {
   visible: boolean;
   position: DrawerPosition;
 }
 
-class App extends React.Component<{}, AppState> {
+@inject("stores")
+class App extends React.Component<AppProps, AppState> {
   state: AppState = { visible: false, position: "left" };
+
+  get stores() {
+    const stores = this.props.stores;
+    if (!stores) {
+      throw Error("no stores provided");
+    }
+    return stores;
+  }
 
   openDrawerLeft = () => {
     this.setState({ visible: true, position: "left" });
@@ -64,7 +80,8 @@ class App extends React.Component<{}, AppState> {
         <Button onClick={this.handleClick} type="button" raised primary>
           Yo
         </Button>
-        <VideoList domainId="AEC051FE-B96E-4016-AF9A-E79C76B385C4" />
+        {/* <VideoList domainId="AEC051FE-B96E-4016-AF9A-E79C76B385C4" /> */}
+        <DomainList assets={this.stores.assets} />
         <Drawer
           id="simple-drawer-example"
           type={Drawer.DrawerTypes.TEMPORARY}
