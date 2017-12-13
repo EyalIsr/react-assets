@@ -2,10 +2,10 @@ import * as React from "react";
 import { Button, Drawer, Toolbar, Divider } from "react-md";
 import "./App.css";
 import { DrawerPosition } from "react-md/lib/Drawers";
-import Nav from "./Nav";
+import Nav from "./components/Shared/Nav";
 import VideoList from "./components/VideoList";
 
-const logo = require("./logo.svg");
+const logo = require(".assets/images/logo.svg");
 
 interface AppState {
   visible: boolean;
