@@ -10,6 +10,7 @@
     "react-dom": "^16.2.0",
     "react-md": "^1.2.9",
     "react-scripts-ts": "2.8.0",
+    "tslint": "^5.8.0",
     "video.js": "^6.4.0"
   },
   "scripts": {

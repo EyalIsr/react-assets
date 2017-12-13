@@ -15,8 +15,9 @@ export default class AssetsStore {
     await wait;
     let counter = 1;
     setInterval(() => this.addDomain(`domain ${counter++}`), 1000);
+    this.domains = ["first", "second"];
     runInAction(() => {
-      this.domains.push("first");
+      this.domains.push("third");
 
       this.isFetchingDomains = false;
     });
